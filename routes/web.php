@@ -1,0 +1,78 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+
+
+Route::get('/', function () { return view('welcome');});
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/login',function()
+    {
+        if (Auth::check())
+        {
+            return redirect()->route('home');
+        }
+        return view('auth.login');
+    })->name('login');
+
+Route::post('login',[\App\Http\Controllers\LoginController::class, 'login']);
+
+
+Route::get('register', function()
+{
+    if(Auth::check()){
+        return redirect(route('home'));
+    }
+    return view('auth.register');
+})->name('register');
+
+Route::get('admin/clients',function(){return view('admin.clients');});
+Route::get('admin/debit',function(){return view('admin.debitpay');});
+Route::get('admin/departament',function(){return view('admin.departament');});
+Route::get('admin/departament_operation',function(){return view('admin.departament_operation');});
+Route::get('admin/sum_departament',function(){return view('admin.sum_departament');});
+
+
+
+
+
+
+
+
+
+
+
+Route::post('create_product',[\App\Http\Controllers\CreateProduct_::class, 'product_validity']);
+
+Route::post('create_clients',[\App\Http\Controllers\CreateProduct_::class, 'clients_validity']);
+
+
+Route::get('admin',[\App\Http\Controllers\CreateProduct_::class, 'get_product']);
+
+Route::get('admin',[\App\Http\Controllers\Clients::class, 'get_clients']);
+
+
+
+Route::get('home',[\App\Http\Controllers\CreateProduct_::class, 'get_product']);
+
+
+Route::post('sale',[\App\Http\Controllers\SaleController::class, 'create']);
+
+
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'get_product'])->name('home');
+
