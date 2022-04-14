@@ -24,7 +24,7 @@ class HttpTest extends TestCase
 
     public function test_homepage()
     {
-        $response = $this->get('/home');
+        $response = $this->get('/register');
 
         $response->assertStatus(200);
     }
