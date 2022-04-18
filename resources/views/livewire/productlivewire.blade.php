@@ -1,5 +1,7 @@
 <section class="content">
 
+    
+
     <div id="saleForm" class="modal fade" role="dialog">
         <div class="body">
             <div class="modal-dialog">
@@ -24,10 +26,9 @@
         </form>
 
         <button type="button" wire:click="$emitTo('form.product-add', 'setForm')"
-            class="btn btn-info btn-lg">Add Product</button>
-
-
-        <div id="product_add" class="modal fade" role="dialog">
+            class="btn btn-info btn-lg" style="margin-left: 15px">Add Product</button>
+            
+            <div id="product_add" class="modal fade" role="dialog">
             <div class="body">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -42,7 +43,6 @@
                 </div>
             </div>
         </div>
-
 
 
 
@@ -116,7 +116,26 @@
 
 
 
-                                    <th scope="row">{{ $item->get_history->count() }}</th>
+                                    <th scope="row">
+                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                            data-target="#image{{ $i }}">Image</button>
+                                        <div id="image{{ $i }}" class="modal fade" role="dialog">
+                                            <div class="body">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">Coming</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <canvas id="myChart"></canvas>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
                                     <th scope="row"><button type="button" class="btn btn-info btn-lg"
                                             wire:click="$emit('add',{{ $item->id }})">Add</button></th>
                                     <th scope="row"><button type="button" class="btn btn-info btn-lg"
@@ -155,6 +174,68 @@
 
                 $('#product_add').modal('show');
             });
+
+            const labels = [
+                '2022-03-26',
+                '2022-03-28',
+                '2022-04-02',
+                '2022-04-04',
+                '2022-04-14',
+            ];
+
+            const data = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'nexia',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [10, 0, 0, 0, 0],
+                    },
+                    {
+                        label: 'apelsin',
+                        backgroundColor: 'rgb(51, 0, 102)',
+                        borderColor: 'rgb(51, 0, 102)',
+                        data: [11, 0, 0, 0, 0],
+                    },
+                    {
+                        label: 'mandarin',
+                        backgroundColor: 'rgb(51, 255, 511)',
+                        borderColor: 'rgb(51, 255, 511)',
+                        data: [50, 0, 0, 0, 0],
+                    },
+                    {
+                        label: 'apple',
+                        backgroundColor: 'rgb(0, 5, 255)',
+                        borderColor: 'rgb(0, 5, 255)',
+                        data: [26, 0, 0, 0, 0],
+                    },
+                    {
+                        label: 'asdqa',
+                        backgroundColor: 'rgb(255 ,51, 51)',
+                        borderColor: 'rgb(255 ,51, 51)',
+                        data: [0, 12, 0, 0, 0],
+                    },
+                    {
+                        label: 'asd',
+                        backgroundColor: 'rgb(0, 25, 51)',
+                        borderColor: 'rgb(0, 25, 51)',
+                        data: [0, 21, 0, 0, 0],
+                    },
+                    
+                ]
+            };
+
+            const config = {
+                type: 'line',
+                data: data,
+                options: {}
+            };
+
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
         </script>
 
 </section>
