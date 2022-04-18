@@ -26,9 +26,15 @@ class Summa_departament extends Model
         $this->belongsToMany('App\Models\Summa_departament', 'id', 'departament_id', 'departament_oper_id','description', 'summa');
 
     }   
+
+    public function get_departament()
+    {
+        return $this->hasOne(DepartamentModel::class,'id', 'departament_id')->first()['name'];
+    }
+
     
     public function departament_operation_name()
     {
-        return $this->hasOne(DepartamentOperation::class,'id', 'departament_oper_id');
+        return $this->hasOne(DepartamentOperation::class,'id', 'departament_oper_id')->first()['name'];
     }
 }

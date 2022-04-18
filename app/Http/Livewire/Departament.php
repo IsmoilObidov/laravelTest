@@ -8,6 +8,16 @@ use Livewire\Component;
 class Departament extends Component
 {
 
+    protected $listener = ['delete'];
+
+
+
+    public function delete($id)
+    {
+        DepartamentModel::find($id)->delete();
+    }
+
+
 
     
     public function render()

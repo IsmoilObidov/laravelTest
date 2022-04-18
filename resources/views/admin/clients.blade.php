@@ -24,14 +24,14 @@
     <link href="{{ asset('css/admin/modal') }}" rel="stylesheet">
 
 
-    <!-- Waves Effect Css -->
+    {{-- <!-- Waves Effect Css -->
     <link href="{{ asset('css/admin/node-waves/waves.css') }}" rel="stylesheet" />
 
     <!-- Animation Css -->
     <link href="{{ asset('css/admin/animate-css/animate.css') }}" rel="stylesheet" />
 
     <!-- Morris Chart Css-->
-    <link href="{{ asset('css/admin/morrisjs/morris.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/admin/morrisjs/morris.css') }}" rel="stylesheet" /> --}}
 
     <!-- Custom Css -->
     <link href="{{ asset('css/admin/style.css') }}" rel="stylesheet">

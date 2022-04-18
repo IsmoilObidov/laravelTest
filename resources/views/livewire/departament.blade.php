@@ -1,7 +1,7 @@
 <div class="container" style="margin-left: 24%;width: 70%">
 
     <button type="button" wire:click="$emitTo('form.departament-form', 'setForm')"
-        class="btn btn-info btn-lg">Add</button>
+        class="btn btn-info btn-lg" style="margin-left: 15px">Add</button>
 
     <div id="departamentForm" class="modal fade" role="dialog">
         <div class="body">
@@ -28,11 +28,13 @@
                 </h2>
             </div>
             <div class="body table-responsive">
-                <table class="table" name="table">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
+                            <th>Delete</th>
+
 
 
 
@@ -45,6 +47,8 @@
                             <tr>
                                 <th scope="row">{{ $item->id }}</th>
                                 <th scope="row">{{ $item->name }}</th>
+                                <th scope="row"><button type="button" wire:click="$emit('delete', {{ $item->id }})"
+                                    class="btn btn-danger btn-lg">Delete</button></th>
                             </tr>
                         @endforeach
 

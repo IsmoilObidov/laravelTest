@@ -79,12 +79,13 @@
                 </h2>
             </div>
             <div class="body table-responsive">
-                <table class="table" name="table">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
                             <th>Departament</th>
+                            <th>Delete</th>
 
 
 
@@ -100,6 +101,8 @@
                                 <th scope="row">{{ $departament_o->id }}</th>
                                 <th scope="row">{{$departament_o->name}}</th>
                                 <th scope="row">{{$departament_o->departament_id}}</th>
+                                <th scope="row"><button type="button" wire:click="$emit('delete', {{ $departament_o->id }})"
+                                    class="btn btn-danger btn-lg">Delete</button></th>
 
                             </tr>
                         @endforeach

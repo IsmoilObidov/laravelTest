@@ -91,6 +91,7 @@
                             <th>Departament Operation</th>
                             <th>Summa</th>
                             <th>Description</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     @php
@@ -100,8 +101,8 @@
                         <tbody>
 
                             <th scope="row">{{ $item->id }}</th>
-                            <th scope="row">{{ $item->departament_operation_name->get_departament->{'name'} }}</th>
-                            <th scope="row">{{ $item->departament_operation_name->{'name'} }}</th>
+                            <th scope="row">{{ $item->get_departament() }}</th>
+                            <th scope="row">{{ $item->departament_operation_name() }}</th>
                             <th scope="row">${{ $item->summa }}</th>
                             <th scope="row">
 

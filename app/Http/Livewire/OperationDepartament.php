@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\DepartamentModel;
 use App\Models\DepartamentOperation;
+use App\Models\Summa_departament;
 use Livewire\Component;
 
 class OperationDepartament extends Component
@@ -11,6 +12,8 @@ class OperationDepartament extends Component
     public $name_operation_departament;
     public $departament_id;
     public $departament;
+
+    protected $listeners = ['delete'];
 
 
     public function create()
@@ -24,6 +27,11 @@ class OperationDepartament extends Component
             'name' => $validatedData['name_operation_departament'],
             'departament_id' => $validatedData['departament']
         ]);
+    }
+
+    public function delete($id)
+    {
+        DepartamentOperation::find($id)->delete();
     }
 
     public function render()
