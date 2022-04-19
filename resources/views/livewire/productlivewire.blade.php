@@ -1,6 +1,6 @@
 <section class="content">
 
-    
+
 
     <div id="saleForm" class="modal fade" role="dialog">
         <div class="body">
@@ -25,10 +25,10 @@
             <input wire:model="search" type="text" placeholder="Search..." />
         </form>
 
-        <button type="button" wire:click="$emitTo('form.product-add', 'setForm')"
-            class="btn btn-info btn-lg" style="margin-left: 15px">Add Product</button>
-            
-            <div id="product_add" class="modal fade" role="dialog">
+        <button type="button" wire:click="$emitTo('form.product-add', 'setForm')" class="btn btn-info btn-lg"
+            style="margin-left: 15px">Add Product</button>
+
+        <div id="product_add" class="modal fade" role="dialog">
             <div class="body">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -118,13 +118,14 @@
 
                                     <th scope="row">
                                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                            data-target="#image{{ $i }}">Image</button>
-                                        <div id="image{{ $i }}" class="modal fade" role="dialog">
+                                            data-target="#history">History</button>
+                                        <div id="history" class="modal fade" role="dialog">
                                             <div class="body">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal">&times;</button>
                                                             <h4 class="modal-title">Coming</h4>
                                                         </div>
                                                         <div class="modal-body">
@@ -185,8 +186,7 @@
 
             const data = {
                 labels: labels,
-                datasets: [
-                    {
+                datasets: [{
                         label: 'nexia',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
@@ -222,10 +222,9 @@
                         borderColor: 'rgb(0, 25, 51)',
                         data: [0, 21, 0, 0, 0],
                     },
-                    
+
                 ]
             };
-
             const config = {
                 type: 'line',
                 data: data,
