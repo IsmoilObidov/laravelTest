@@ -64,6 +64,17 @@
                                 @endif
                             </div>
                         </div>
+
+                        <label for="name" class="col-md-4 control-label">Login With</label>
+                           <div class="col-md-6">
+                               <a href="{{ url('login/facebook') }}" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook">facebook</i></a>
+                               <a href="{{ url('login/twitter') }}" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter">twitter</i></a>
+                               <a href="{{ url('login/google') }}" class="btn btn-social-icon btn-google-plus"><i class="fa fa-google-plus">google</i></a>
+                               <a href="{{ url('login/linkedin') }}" class="btn btn-social-icon btn-linkedin"><i class="fa fa-linkedin">linkedin</i></a>
+                               <a href="{{ url('login/github') }}" class="btn btn-social-icon btn-github"><i class="fa fa-github">github</i></a>
+                               <a href="{{ url('login/bitbucket') }}" class="btn btn-social-icon btn-bitbucket"><i class="fa fa-bitbucket">bitbucket</i></a>
+                           </div>
+                       </div>
                     </form>
                 </div>
             </div>
