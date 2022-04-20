@@ -123,6 +123,10 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'Barryvdh\Debugbar\ServiceProvider',
+
+    'Debugbar' => 'Barryvdh\Debugbar\Facade',
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
