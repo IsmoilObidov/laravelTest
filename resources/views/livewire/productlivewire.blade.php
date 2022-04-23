@@ -1,7 +1,5 @@
 <section class="content">
 
-
-
     <div id="saleForm" class="modal fade" role="dialog">
         <div class="body">
             <div class="modal-dialog">
@@ -70,6 +68,7 @@
                                 <th>Photo</th>
                                 <th>Expense</th>
                                 <th>Coming</th>
+                                <th>Sales</th>
                                 <th>Add</th>
                                 <th>Minus</th>
                                 <th>Delete</th>
@@ -117,30 +116,24 @@
 
 
                                     <th scope="row">
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                        <button type="button" class="btn btn-info btn-lg"
+                                            wire:click="$emit('report', {{ $item->id }})" data-toggle="modal"
                                             data-target="#history">History</button>
-                                        <div id="history" class="modal fade" role="dialog">
-                                            <div class="body">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal">&times;</button>
-                                                            <h4 class="modal-title">Coming</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <canvas id="myChart"></canvas>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </th>
+
+                                    <th scope="row">
+                                        <button type="button" class="btn btn-info btn-lg"
+                                            wire:click="$emit('sales', {{ $item->id }})" data-toggle="modal"
+                                            data-target="#sales">Sales</button>
+                                    </th>
+
+
                                     <th scope="row"><button type="button" class="btn btn-info btn-lg"
                                             wire:click="$emit('add',{{ $item->id }})">Add</button></th>
+
                                     <th scope="row"><button type="button" class="btn btn-info btn-lg"
                                             wire:click="$emit('minus',{{ $item->id }})">Minus</button></th>
+                                    
                                     <th scope="row"><button type="button"
                                             wire:click="$emit('delete', {{ $item->id }})"
                                             class="btn btn-danger btn-lg">Delete</button></th>
@@ -176,65 +169,134 @@
                 $('#product_add').modal('show');
             });
 
-            const labels = [
+
+            labels = [
                 '2022-03-26',
-                '2022-03-28',
-                '2022-04-02',
-                '2022-04-04',
-                '2022-04-14',
             ];
 
-            const data = {
+            data = {
                 labels: labels,
                 datasets: [{
-                        label: 'nexia',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: [10, 0, 0, 0, 0],
+                        label: '',
+                        backgroundColor: 'rgb(0,0,0)',
+                        borderColor: 'rgb(0,0,0)',
+                        data: [0, 0, 0, 0, 0],
                     },
-                    {
-                        label: 'apelsin',
-                        backgroundColor: 'rgb(51, 0, 102)',
-                        borderColor: 'rgb(51, 0, 102)',
-                        data: [11, 0, 0, 0, 0],
-                    },
-                    {
-                        label: 'mandarin',
-                        backgroundColor: 'rgb(51, 255, 511)',
-                        borderColor: 'rgb(51, 255, 511)',
-                        data: [50, 0, 0, 0, 0],
-                    },
-                    {
-                        label: 'apple',
-                        backgroundColor: 'rgb(0, 5, 255)',
-                        borderColor: 'rgb(0, 5, 255)',
-                        data: [26, 0, 0, 0, 0],
-                    },
-                    {
-                        label: 'asdqa',
-                        backgroundColor: 'rgb(255 ,51, 51)',
-                        borderColor: 'rgb(255 ,51, 51)',
-                        data: [0, 12, 0, 0, 0],
-                    },
-                    {
-                        label: 'asd',
-                        backgroundColor: 'rgb(0, 25, 51)',
-                        borderColor: 'rgb(0, 25, 51)',
-                        data: [0, 21, 0, 0, 0],
-                    },
-
                 ]
             };
-            const config = {
+            config = {
                 type: 'line',
                 data: data,
                 options: {}
             };
 
+
+
+
+
+
             const myChart = new Chart(
                 document.getElementById('myChart'),
                 config
             );
+
+
+            const salesChart = new Chart(
+                document.getElementById('salesChart'),
+                config
+            );
+
+
+
+
+
+
+
+            window.addEventListener('report-product', event => {
+
+                label = [];
+
+                labels = [];
+
+                data_qty = [];
+
+                event.detail.report.map(function name(value) {
+
+
+
+                    labels.push(value.date);
+
+                    data_qty.push(value.quantity);
+                })
+
+                data = {
+                    labels: labels,
+                    datasets: [{
+                            label: event.detail.name,
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: data_qty,
+                        }
+
+                    ]
+                };
+
+                config = {
+                    type: 'line',
+                    data: data,
+                    options: {}
+                };
+
+                myChart.data = data;
+
+                myChart.update();
+            })
+
+
+
+
+
+
+
+
+            window.addEventListener('sales-product', event => {
+
+                labels = [];
+
+                data_qty = [];
+
+                event.detail.sales.map(function name(value) {
+
+                    labels.push(value.date);
+
+                    data_qty.push(value.quantity);
+                })
+
+                data = {
+                    labels: labels,
+                    datasets: [{
+                            label: event.detail.name,
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: data_qty,
+                        }
+
+                    ]
+                };
+
+                config = {
+                    type: 'line',
+                    data: data,
+                    options: {}
+                };
+
+                salesChart.data = data;
+
+                salesChart.update();
+            })
+
+
+
         </script>
 
 </section>

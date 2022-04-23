@@ -2,14 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Clients;
 use App\Models\ClientsModel;
 use App\Models\Product;
 use App\Models\ProductComings;
 use Livewire\Component;
 use Livewire\WithPagination;
-use phpDocumentor\Reflection\PseudoTypes\True_;
-use PhpOption\None;
+
 
 class Productlivewire extends Component
 {
@@ -19,7 +17,7 @@ class Productlivewire extends Component
     protected $paginationTheme = 'bootstrap';
 
     
-    protected $listeners = ['delete','add','minus'];
+    protected $listeners = ['delete','add','minus','report','sales'];
     
 
     public function delete($id)
@@ -67,5 +65,15 @@ class Productlivewire extends Component
         'clients' => $clients,
         
         ]);
+    }
+
+    public function report($id)
+    {
+        $this->dispatchBrowserEvent('report-product', ['report' => Product::where('id' , '=' , $id)->first()->get_history, 'name' => Product::where('id' , '=' , $id)->first()->{'name'}]);
+    }
+
+    public function sales($id)
+    {
+        $this->dispatchBrowserEvent('sales-product', ['sales' => Product::where('id' , '=' , $id)->first()->sold_quantity, 'name' => Product::where('id' , '=' , $id)->first()->{'name'}]);
     }
 }

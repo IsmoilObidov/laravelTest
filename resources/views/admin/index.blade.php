@@ -185,7 +185,44 @@
             </div>
     </section>
 
+    <div id="history" class="modal fade" role="dialog">
+        <div class="body">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                            data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Coming</h4>
+                    </div>
+                    <div class="modal-body">
+                        <canvas id="myChart"></canvas>
 
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="sales" class="modal fade" role="dialog">
+        <div class="body">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                            data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Sales</h4>
+                    </div>
+                    <div class="modal-body">
+                        <canvas id="salesChart"></canvas>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     @livewire('productlivewire')
