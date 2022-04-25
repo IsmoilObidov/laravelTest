@@ -133,7 +133,7 @@
 
                                     <th scope="row"><button type="button" class="btn btn-info btn-lg"
                                             wire:click="$emit('minus',{{ $item->id }})">Minus</button></th>
-                                    
+
                                     <th scope="row"><button type="button"
                                             wire:click="$emit('delete', {{ $item->id }})"
                                             class="btn btn-danger btn-lg">Delete</button></th>
@@ -177,12 +177,11 @@
             data = {
                 labels: labels,
                 datasets: [{
-                        label: '',
-                        backgroundColor: 'rgb(0,0,0)',
-                        borderColor: 'rgb(0,0,0)',
-                        data: [0, 0, 0, 0, 0],
-                    },
-                ]
+                    label: '',
+                    backgroundColor: 'rgb(0,0,0)',
+                    borderColor: 'rgb(0,0,0)',
+                    data: [0, 0, 0, 0, 0],
+                }, ]
             };
             config = {
                 type: 'line',
@@ -266,10 +265,10 @@
                 data_qty = [];
 
                 event.detail.sales.map(function name(value) {
-
                     labels.push(value.date);
 
                     data_qty.push(value.quantity);
+
                 })
 
                 data = {
@@ -294,9 +293,6 @@
 
                 salesChart.update();
             })
-
-
-
         </script>
 
 </section>

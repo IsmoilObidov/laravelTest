@@ -13,6 +13,11 @@ class Productlivewire extends Component
 {
     public $search = '';
 
+    public $qty;
+
+    public $all;
+    public $all1;
+
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
@@ -67,13 +72,68 @@ class Productlivewire extends Component
         ]);
     }
 
+
+
     public function report($id)
     {
-        $this->dispatchBrowserEvent('report-product', ['report' => Product::where('id' , '=' , $id)->first()->get_history, 'name' => Product::where('id' , '=' , $id)->first()->{'name'}]);
+        $this->all = []; 
+        Product::where('id' , '=' , $id)->first()->get_history->groupBy('date')
+            ->map(function ($item) {
+
+                $this->qty = 0;
+                $item->map(function ($item1)
+                {
+
+                    $this->qty += $item1->{'quantity'};
+
+                });
+
+                try {
+                    array_push(
+                        $this->all,
+                        [
+                            'date' => $item[0]->{'date'},
+                            'quantity' => $this->qty,
+                        ]
+                    );
+                } catch (\Throwable $th) {}
+                
+            });
+        
+
+        $this->dispatchBrowserEvent('report-product', ['report' => $this->all, 'name' => Product::where('id' , '=' , $id)->first()->{'name'}]);
     }
+
+
 
     public function sales($id)
     {
-        $this->dispatchBrowserEvent('sales-product', ['sales' => Product::where('id' , '=' , $id)->first()->sold_quantity, 'name' => Product::where('id' , '=' , $id)->first()->{'name'}]);
+
+        $this->all1 = []; 
+        Product::where('id' , '=' , $id)->first()->sold_quantity->groupBy('date')
+            ->map(function ($item) {
+
+                $this->qty = 0;
+                $item->map(function ($item1)
+                {
+
+                    $this->qty += $item1->{'quantity'};
+
+                });
+
+                try {
+                    array_push(
+                        $this->all1,
+                        [
+                            'date' => $item[0]->{'date'},
+                            'quantity' => $this->qty,
+                        ]
+                    );
+                } catch (\Throwable $th) {}
+                
+            });
+
+
+        $this->dispatchBrowserEvent('sales-product', ['sales' => $this->all1, 'name' => Product::where('id' , '=' , $id)->first()->{'name'}]);
     }
 }
