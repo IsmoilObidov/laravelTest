@@ -18,23 +18,27 @@ class Summa_departament extends Model
      * @var array
      */
     protected $fillable = [
-       'id', 'departament_id', 'departament_oper_id','description', 'summa'
+       'id', 'departament_oper_id','description', 'summa'
     ];
     
     public function news ()
     {
-        $this->belongsToMany('App\Models\Summa_departament', 'id', 'departament_id', 'departament_oper_id','description', 'summa');
+        $this->belongsToMany('App\Models\Summa_departament', 'id', 'departament_oper_id','description', 'summa','date');
 
     }   
 
     public function get_departament()
     {
-        return $this->hasOne(DepartamentModel::class,'id', 'departament_id')->first()['name'];
+        return $this->hasOne(DepartamentModel::class,'id', 'departament_id');
     }
 
+    public function get_history()
+    {
+        return $this->hasMany(DepartamentModel::class,'id', 'departament_id');
+    }
     
     public function departament_operation_name()
     {
-        return $this->hasOne(DepartamentOperation::class,'id', 'departament_oper_id')->first()['name'];
+        return $this->hasOne(DepartamentOperation::class,'id', 'departament_oper_id');
     }
 }

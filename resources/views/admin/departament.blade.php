@@ -23,6 +23,8 @@
 
     <link href="{{ asset('css/admin/modal') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 
     <!-- Waves Effect Css -->
     <link href="{{ asset('css/admin/node-waves/waves.css') }}" rel="stylesheet" />
@@ -38,6 +40,11 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('css/admin/all-themes.css') }}" rel="stylesheet" />
+
+    {{-- chart.js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+        integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     
     @livewireStyles
@@ -206,7 +213,22 @@
 
 
 
-
+    <div id="history" class="modal fade" role="dialog">
+        <div class="body">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                            data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">report</h4>
+                    </div>
+                    <div class="modal-body">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @livewire('departament')
 

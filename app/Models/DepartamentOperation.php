@@ -27,6 +27,10 @@ class DepartamentOperation extends Model
     }
 
 
+    public function get_history()
+    {
+        return $this->hasMany(Summa_departament::class,'departament_oper_id','id')->orderBy('date', 'desc');
+    }
     public function news ()
     {
         $this->belongsToMany('App\Models\DepartamentOperation', 'id', 'name', 'departament_id');

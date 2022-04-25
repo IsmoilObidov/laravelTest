@@ -20,7 +20,6 @@ class SummaDepartament extends Component
     public function create()
     {
         $validatedData = $this->validate([
-            'departament_id' => ['required', 'integer','digits_between:1,11'],
             'departament_oper_id' => ['required', 'integer','digits_between:1,11'],
             'summa' => ['required', 'integer','digits_between:1,11'],
             'description' => ['max:255'],

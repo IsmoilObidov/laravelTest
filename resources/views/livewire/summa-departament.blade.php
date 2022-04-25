@@ -7,14 +7,7 @@
             <form wire:submit.prevent='create'>
                 <div class="row clearfix">
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                        <select name="departament_id" wire:model="departament_id">
-                            <option></option>
-                            @foreach ($departament as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <label for="departament_operation">Departament Operation</label>
                         <select name="departament_oper_id" wire:model="departament_oper_id">
                             <option></option>
                             @foreach ($departament_operation as $item)
@@ -22,7 +15,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">   
                         <input type="number" name="summa" wire:model="summa" class="form-control"
                             placeholder="Enter sum">
                     </div>
@@ -37,11 +30,6 @@
             </form>
         </div>
     </div>
-
-    @error('departament_id')
-        <div class="alert alert-danger">
-            {{ $message }}</div>
-    @enderror
 
     @error('departament_oper_id')
         <div class="alert alert-danger">
@@ -101,8 +89,8 @@
                         <tbody>
 
                             <th scope="row">{{ $item->id }}</th>
-                            <th scope="row">{{ $item->get_departament() }}</th>
-                            <th scope="row">{{ $item->departament_operation_name() }}</th>
+                            <th scope="row">{{ $item->departament_operation_name->get_departament->{'name'} }}</th>
+                            <th scope="row">{{ $item->departament_operation_name->{'name'} }}</th>
                             <th scope="row">${{ $item->summa }}</th>
                             <th scope="row">
 
