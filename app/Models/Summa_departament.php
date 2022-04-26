@@ -41,4 +41,9 @@ class Summa_departament extends Model
     {
         return $this->hasOne(DepartamentOperation::class,'id', 'departament_oper_id');
     }
+
+    public function departament_operation()
+    {
+        return $this->hasOne(DepartamentOperation::class,'id', 'departament_oper_id');
+    }
 }

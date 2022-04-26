@@ -26,6 +26,10 @@ class DepartamentOperation extends Model
         return $this->hasOne(DepartamentModel::class,'id', 'departament_id');
     }
 
+    public function get_departament_()
+    {
+        return $this->hasMany(DepartamentModel::class,'id', 'departament_id');
+    }
 
     public function get_history()
     {

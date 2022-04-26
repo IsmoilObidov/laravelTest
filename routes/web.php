@@ -46,6 +46,9 @@ Route::get('admin/departament_operation',function(){return view('admin.departame
 
 Route::get('admin/sum_departament',function(){return view('admin.sum_departament');});
 
+Route::get('admin/departament-results',function(){return view('admin.departament-results');});
+
+
 Route::post('create_product',[\App\Http\Controllers\CreateProduct_::class, 'product_validity']);
 
 Route::post('create_clients',[\App\Http\Controllers\CreateProduct_::class, 'clients_validity']);

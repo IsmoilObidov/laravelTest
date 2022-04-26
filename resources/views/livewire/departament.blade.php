@@ -129,7 +129,7 @@
 
                     Object.values(value)[0].map(function name(value1) {
 
-                        data_qty.push(value1.quantity);
+                        data_qty.push(value1.summa);
 
                     })
 

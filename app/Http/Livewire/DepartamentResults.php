@@ -3,30 +3,24 @@
 namespace App\Http\Livewire;
 
 use App\Models\DepartamentModel;
+use App\Models\DepartamentOperation;
 use App\Models\Summa_departament;
 use Livewire\Component;
 
-class Departament extends Component
+class DepartamentResults extends Component
 {
+    protected $listener = ['report'];
+    public $fromDate;
+    public $toDate;
 
-
-    protected $listeners = ['delete', 'report'];
-
-
-
-    public function delete($id)
-    {
-        DepartamentModel::find($id)->delete();
-    }
-
-    public function report($id)
+    public function report()
     {
 
         $obj = [];
 
 
 
-        foreach (DepartamentModel::where('id', '=', $id)->first()->get_operation as $key) {
+        foreach (DepartamentModel::first()->get_operation as $key) {
 
             $all = [];
 
@@ -59,6 +53,7 @@ class Departament extends Component
             $this->dispatchBrowserEvent(
                 'report-product',
                 [
+                    'name' => DepartamentModel::all(),
                     'report' => $obj,
                     'date' => Summa_departament::all()
                 ]
@@ -67,18 +62,9 @@ class Departament extends Component
     }
 
 
-
-
     public function render()
     {
-
         $departament = DepartamentModel::all();
-
-        return view(
-            'livewire.departament',
-            [
-                'departament' => $departament,
-            ]
-        );
+        return view('livewire.departament-results', ['departament' => $departament]);
     }
 }

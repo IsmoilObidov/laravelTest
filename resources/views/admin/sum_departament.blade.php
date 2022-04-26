@@ -177,6 +177,12 @@
                             <span>Finance</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{'/admin/departament-results'}}">
+                        <i class="material-icons">lens</i>
+                            <span>Finance</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
     </section>
