@@ -4,18 +4,18 @@
     <label for="">To</label>
     <input type="date" name="toDate" wire:model="toDate" id="toDate">
     <input type="button" class="btn btn-primary" name="search" wire:click="report" value="Search">
-        <canvas id="myChart"></canvas>
+    <canvas id="myChart"></canvas>
 </section>
 
 <script>
     labels = [
-        '2022-03-26',
+        '0000-00-00',
     ];
 
     data = {
         labels: labels,
         datasets: [{
-            label: '',
+            label: 'null',
             backgroundColor: 'rgb(0,0,0)',
             borderColor: 'rgb(0,0,0)',
             data: [0, 0, 0, 0, 0],
@@ -50,7 +50,6 @@
         data = [];
 
         num = [];
-        label= [];
 
         function getRandomInt() {
             return Math.floor(Math.random() * (255 - 0)) + 0;
@@ -64,16 +63,11 @@
             labels.push(value.date);
         })
 
-        event.detail.name.map(function name(value) {
-            label.push(value.name);
-        })
-
         event.detail.report.map(function name(value) {
 
             data_qty = []
 
             Object.values(value)[0].map(function name(value1) {
-
                 data_qty.push(value1.summa);
 
             })

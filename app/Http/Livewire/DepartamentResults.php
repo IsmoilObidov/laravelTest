@@ -17,48 +17,59 @@ class DepartamentResults extends Component
     {
 
         $obj = [];
-
-
-
-        foreach (DepartamentModel::first()->get_operation as $key) {
-
+        foreach (DepartamentModel::all() as $key) {
+            
             $all = [];
 
-            foreach ($key->get_history->groupBy('date') as $key1) {
+            foreach ($key->get_operation as $key1) {
+                
+                foreach ($key1->get_history->groupBy('date') as $key2) {
+                    $summa = 0;
+                    
+                    foreach ($key2 as $key3) {
 
-                $summa = 0;
+                        $summa += $key3->{'summa'};
 
-                foreach ($key1 as $key2) {
-                    $summa += $key2->{'summa'};
+                    }
+                    try {
+                        array_push(
+                            $all,
+                            [
+                                'date' => $key2[0]->{'date'},
+                                'summa' => $summa,
+                                ]
+                            );
+                        } catch (\Throwable $th) {
+                        }
+                    }
+                    
+                    
                 }
+                array_push($obj, [$key->{'name'} => $all]);
 
-                try {
-                    array_push(
-                        $all,
-                        [
-                            'date' => $key1[0]->{'date'},
-                            'summa' => $summa,
-                        ]
-                    );
-                } catch (\Throwable $th) {}
+                
+                
             }
-
-            array_push( $obj, [ $key->{'name'} => $all ] );
             
-            
-        }
-        try {
-
-
-            $this->dispatchBrowserEvent(
-                'report-product',
-                [
-                    'name' => DepartamentModel::all(),
-                    'report' => $obj,
-                    'date' => Summa_departament::all()
-                ]
-            );
-        } catch (\Throwable $th) {}
+            // if (!$this->fromDate < $this->toDate) {
+                $this->dispatchBrowserEvent(
+                    'report-product',
+                    [
+                        'report' => $obj,
+                        'date' => Summa_departament::all()
+                    ]
+                );
+            // }
+            // else{
+            //     $this->dispatchBrowserEvent(
+            //         'report-product',
+            //         [
+            //             'report' => $obj,
+            //             'date' => Summa_departament::where('date','=',$this->fromDate)
+            //         ]
+            //     );
+            // }
+        
     }
 
 

@@ -16,11 +16,11 @@ class ClientsSeeder extends Seeder
     public function run()
     {
 
-        for ($i=0; $i < 10; $i++) {
-            DB::table('clients')->insert([
-                'name' => Str::random(10),
-                'address' => Str::random(10),
-                'phoneNumber' =>Str::random(10) ,
+        for ($i=0; $i < 3; $i++) {
+            DB::table('summa_departament')->insert([
+                'departament_oper_id' => '22',
+                'summa' => Integer::random(10),
+                // 'phoneNumber' =>Str::random(10) ,
             ]);
         }
     }

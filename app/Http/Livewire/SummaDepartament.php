@@ -14,7 +14,7 @@ class SummaDepartament extends Component
     public $description;
     public $summa;
 
-    protected $listener = ['delete'];
+    protected $listeners = ['delete'];
 
 
     public function create()

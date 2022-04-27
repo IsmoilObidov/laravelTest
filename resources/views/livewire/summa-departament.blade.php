@@ -67,7 +67,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Sum
+                    Finance
                 </h2>
             </div>
             <div class="body table-responsive">

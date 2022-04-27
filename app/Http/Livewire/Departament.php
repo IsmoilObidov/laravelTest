@@ -31,9 +31,9 @@ class Departament extends Component
             $all = [];
 
             foreach ($key->get_history->groupBy('date') as $key1) {
-
+                
                 $summa = 0;
-
+                
                 foreach ($key1 as $key2) {
                     $summa += $key2->{'summa'};
                 }
