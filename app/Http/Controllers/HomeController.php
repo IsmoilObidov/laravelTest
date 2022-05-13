@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -17,7 +16,7 @@ class HomeController extends Controller
     {
         $this->middleware(['auth', 'verified']);
     }
-
+    
     /**
      * Show the application dashboard.
      *
@@ -27,11 +26,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
+    
     public function get_product()
     {
         return view('home', ['products' => Product::all()]);
         
-
+        
     }
 }

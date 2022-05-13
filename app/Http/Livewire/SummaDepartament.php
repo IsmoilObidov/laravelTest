@@ -41,7 +41,7 @@ class SummaDepartament extends Component
 
         return view('livewire.summa-departament',
         [
-            'departament' => $departament,
+            'departament' => $departament,  
             'departament_operation' => $departament_operation,
             'summa_departament' => $summa_departament,
         ]);

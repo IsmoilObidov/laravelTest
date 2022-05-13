@@ -60,7 +60,7 @@ class Departament extends Component
                 'report-product',
                 [
                     'report' => $obj,
-                    'date' => Summa_departament::all()
+                    'date' => Summa_departament::all()->groupBy('date'),
                 ]
             );
         } catch (\Throwable $th) {}

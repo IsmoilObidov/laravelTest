@@ -48,6 +48,8 @@ Route::get('admin/sum_departament',function(){return view('admin.sum_departament
 
 Route::get('admin/departament-results',function(){return view('admin.departament-results');});
 
+Route::get('admin/reports',function(){return view('admin.reports_admin');});
+
 
 Route::post('create_product',[\App\Http\Controllers\CreateProduct_::class, 'product_validity']);
 

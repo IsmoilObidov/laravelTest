@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -15,28 +15,8 @@
 
     {{-- Livewire --}}
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-    <!-- Bootstrap Core Css -->
-    <link href="{{ asset('css/admin/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('css/admin/modal') }}" rel="stylesheet">
-
-
-    <!-- Waves Effect Css -->
-    <link href="{{ asset('css/admin/node-waves/waves.css') }}" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="{{ asset('css/admin/animate-css/animate.css') }}" rel="stylesheet" />
-
-    <!-- Morris Chart Css-->
-    <link href="{{ asset('css/admin/morrisjs/morris.css') }}" rel="stylesheet" />
-
-    <!-- Custom Css -->
     <link href="{{ asset('css/admin/style.css') }}" rel="stylesheet">
-
-    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('css/admin/all-themes.css') }}" rel="stylesheet" />
 
     {{-- chart.js --}}
@@ -53,13 +33,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-        .fixed-top{
-            position:fixed;
-            top:0;
-            right:0;
-            left:0;
-            z-index:1030
+        .fixed-top {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1030
         }
+
     </style>
 </head>
 
@@ -141,55 +122,55 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="active">
-                        <a href="index.html">
+                    <li>
+                        <a href="{{ '/admin' }}">
                             <i class="material-icons">home</i>
                             <span>Product</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{'admin/clients'}}">
+                        <a href="{{ '/admin/clients' }}">
                             {{-- pages/typography.html --}}
                             <i class="material-icons">account_circle</i>
                             <span>Clients</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{'admin/debit'}}">
-                        <i class="material-icons">credit_card</i>
+                        <a href="{{ '/admin/debit' }}">
+                            <i class="material-icons">credit_card</i>
                             <span>Debit</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{'admin/departament'}}">
-                        <i class="material-icons">location_city</i>
+                        <a href="{{ '/admin/departament' }}">
+                            <i class="material-icons">location_city</i>
                             <span>Departament</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{'/admin/departament_operation'}}">
-                        <i class="material-icons">local_shipping</i>
+                        <a href="{{ '/admin/departament_operation' }}">
+                            <i class="material-icons">local_shipping</i>
                             <span>Departament Operation</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{'/admin/sum_departament'}}">
-                        <i class="material-icons">contact_mail</i>
+                        <a href="{{ '/admin/sum_departament' }}">
+                            <i class="material-icons">contact_mail</i>
                             <span>Finance</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{'/admin/departament-results'}}">
-                        <i class="material-icons">lens</i>
-                            <span>Finance</span>
+                        <a href="{{ '/admin/departament-results' }}">
+                            <i class="material-icons">lens</i>
+                            <span>Finance Chart</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{'/admin/reports'}}">
-                        <i class="material-icons">report</i>
+                    <li class="active">
+                        <a href="#">
+                            <i class="material-icons">report</i>
                             <span>Reports</span>
                         </a>
                     </li>
@@ -197,47 +178,10 @@
             </div>
     </section>
 
-    <div id="history" class="modal fade" role="dialog">
-        <div class="body">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close"
-                            data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Coming</h4>
-                    </div>
-                    <div class="modal-body">
-                        <canvas id="myChart"></canvas>
 
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-
-    <div id="sales" class="modal fade" role="dialog">
-        <div class="body">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close"
-                            data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Sales</h4>
-                    </div>
-                    <div class="modal-body">
-                        <canvas id="salesChart"></canvas>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    @livewire('productlivewire')
+    @livewire( 'reports')
 
 
 
@@ -292,14 +236,15 @@
     <!-- Demo Js -->
     <script src="{{ asset('js/admin/demo.js') }}"></script>
 
-
-
     <script>
-        window.addEventListener('openModal', function() {
-
-            $('#addProduct').modal('show');
-        })
+        function fnc(value) {
+                $("#reply" + value).click(function() {
+                    $(this).hide();
+                    $('#form' + value).show();
+                });
+        }
     </script>
+
 </body>
 
 </html>

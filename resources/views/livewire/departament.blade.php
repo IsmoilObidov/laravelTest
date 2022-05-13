@@ -1,4 +1,4 @@
-<div class="container" style="margin-left: 24%;width: 70%">
+<section class="content">
 
     <button type="button" wire:click="$emitTo('form.departament-form', 'setForm')" class="btn btn-info btn-lg"
         style="margin-left: 15px">Add</button>
@@ -24,7 +24,7 @@
         <div class="card">
             <div class="header">
                 <h2 style="text-align: center">
-                    Product List
+                    Departament List
                 </h2>
             </div>
             <div class="body table-responsive">
@@ -170,4 +170,4 @@
             });
         </script>
     </div>
-</div>
+</section>

@@ -63,6 +63,8 @@
             labels.push(value.date);
         })
 
+        console.log( event.detail.report );
+
         event.detail.report.map(function name(value) {
 
             data_qty = []

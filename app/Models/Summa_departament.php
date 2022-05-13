@@ -18,7 +18,7 @@ class Summa_departament extends Model
      * @var array
      */
     protected $fillable = [
-       'id', 'departament_oper_id','description', 'summa'
+       'id', 'departament_oper_id','description', 'summa', 'date'
     ];
     
     public function news ()

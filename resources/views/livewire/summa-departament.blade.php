@@ -8,11 +8,13 @@
                 <div class="row clearfix">
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <label for="departament_operation">Departament Operation</label>
-                        <select name="departament_oper_id" wire:model="departament_oper_id">
+                        <select list="brow" name="departament_oper_id" wire:model="departament_oper_id">
                             <option></option>
+                            <datalist id="brow">
                             @foreach ($departament_operation as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                <option value="{{ $item->id }}">{{ $item->name }} - {{ $item->get_departament() }}</option>
                             @endforeach
+                            </datalist>
                         </select>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">   
@@ -89,7 +91,7 @@
                         <tbody>
 
                             <th scope="row">{{ $item->id }}</th>
-                            <th scope="row">{{ $item->departament_operation_name->get_departament->{'name'} }}</th>
+                            <th scope="row">{{ $item->departament_operation_name->get_departament() }}</th>
                             <th scope="row">{{ $item->departament_operation_name->{'name'} }}</th>
                             <th scope="row">${{ $item->summa }}</th>
                             <th scope="row">
@@ -105,7 +107,7 @@
                                                     data-dismiss="modal">&times;</button>
                                             </div>
                                             <div class="modal-body">
-                                                <strong>{{ $item->description }}</strong>
+                                                <div>{{ $item->description }}</div>
                                             </div>
                                         </div>
 

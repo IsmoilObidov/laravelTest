@@ -1,4 +1,4 @@
-<div class="container" style="margin-left: 20%">
+<section class="content">
     <div id="client" class="modal fade" role="dialog">
         <div class="body">
             <div class="modal-dialog">
@@ -176,4 +176,4 @@
             </div>
         </div>
     </div>
-</div>
+</section>

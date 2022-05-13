@@ -1,10 +1,10 @@
-<div class="container" style="margin-left: 24%;width: 70%">
+<section class="content">
 
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" wire:click="closeModal">&times;</button>
-                    <h4 class="modal-title">Add clients</h4>
+                    <h4 class="modal-title">Add Operations</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row clearfix">
@@ -12,7 +12,7 @@
                             <div class="card">
                                 <div class="header">
                                     <h2>
-                                        Section for adding 
+                                        Section for adding Operations
     
                                     </h2>
                                 </div>
@@ -22,7 +22,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input name="name_operation_departament" wire:model="name_operation_departament" type="text"
-                                                    class="form-control" placeholder="Enter client name">
+                                                    class="form-control" placeholder="Enter Operation">
                                             </div>
                                         </div>
                                         @error('name')
@@ -75,7 +75,7 @@
         <div class="card">
             <div class="header">
                 <h2 style="text-align: center">
-                    Product List
+                    Operation List
                 </h2>
             </div>
             <div class="body table-responsive">
@@ -83,7 +83,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
+                            <th>Operation</th>
                             <th>Departament</th>
                             <th>Delete</th>
 
@@ -100,7 +100,7 @@
                             <tr>
                                 <th scope="row">{{ $departament_o->id }}</th>
                                 <th scope="row">{{$departament_o->name}}</th>
-                                <th scope="row">{{$departament_o->departament_id}}</th>
+                                <th scope="row">{{$departament_o->get_departament()}}</th>
                                 <th scope="row"><button type="button" wire:click="$emit('delete', {{ $departament_o->id }})"
                                     class="btn btn-danger btn-lg">Delete</button></th>
 
@@ -116,4 +116,4 @@
 
 
 
-</div>
+</section>

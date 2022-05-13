@@ -23,7 +23,7 @@ class DepartamentOperation extends Model
 
     public function get_departament()
     {
-        return $this->hasOne(DepartamentModel::class,'id', 'departament_id');
+        return $this->hasOne(DepartamentModel::class,'id', 'departament_id')->first()['name'];
     }
 
     public function get_departament_()

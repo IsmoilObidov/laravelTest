@@ -186,6 +186,12 @@
                             <span>Finance</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{'/admin/reports'}}">
+                        <i class="material-icons">report</i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
     </section>

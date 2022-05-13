@@ -25,7 +25,7 @@ class DepartamentResults extends Component
                 
                 foreach ($key1->get_history->groupBy('date') as $key2) {
                     $summa = 0;
-                    
+
                     foreach ($key2 as $key3) {
 
                         $summa += $key3->{'summa'};
@@ -51,24 +51,13 @@ class DepartamentResults extends Component
                 
             }
             
-            // if (!$this->fromDate < $this->toDate) {
                 $this->dispatchBrowserEvent(
                     'report-product',
                     [
                         'report' => $obj,
-                        'date' => Summa_departament::all()
+                        'date' => Summa_departament::whereBetween('date', [$this->fromDate,$this->toDate])->groupBy('date')->get(),
                     ]
                 );
-            // }
-            // else{
-            //     $this->dispatchBrowserEvent(
-            //         'report-product',
-            //         [
-            //             'report' => $obj,
-            //             'date' => Summa_departament::where('date','=',$this->fromDate)
-            //         ]
-            //     );
-            // }
         
     }
 
