@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HomeModel extends Model
+class ReportAnswer extends Model
 {
     use HasFactory;
 
-
-    protected $table = 'report_bug';
+    protected $table = 'report_answer';
 
     public $timestamps = false;
     /**
@@ -19,18 +18,12 @@ class HomeModel extends Model
      * @var array
      */
     protected $fillable = [
-       'id', 'name_user', 'report_to_admin'
+       'id', 'name_user', 'answer'
     ];
 
-
-    public function get_history()
-    {
-        return $this->hasMany(User::class,'name','name_user');
-    }
-    
     public function news ()
     {
-        $this->belongsToMany('App\Models\HomeModel', 'id', 'name_user', 'report_to_admin');
+        $this->belongsToMany('App\Models\ReportAnswer', 'id', 'name_user', 'answer');
 
     }
 }

@@ -238,11 +238,23 @@
 
     <script>
         function fnc(value) {
-                $("#reply" + value).click(function() {
-                    $(this).hide();
-                    $('#form' + value).show();
-                });
+            $("#reply" + value).click(function() {
+                $(this).hide();
+                $('#form' + value).show();
+            });
         }
+
+        var btnCompanies = document.getElementById("send_report");
+
+        btnCompanies.onclick = function() {
+            window.alert("Successfully send to admins✅");
+        }
+        
+        $('#form').hide();
+        $("#report-answer").click(function() {
+            $('#form').toggle();
+        });
+
     </script>
 
 </body>

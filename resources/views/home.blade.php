@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
         media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     @livewireStyles
@@ -29,12 +30,12 @@
                         src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
                         class="font-weight-bold">{{ Auth::user()->name }}</span><span
                         class="text-black-50">{{ Auth::user()->email }}</span><span> <a
-                            href="{{ route('logout') }}">Logout</a> </span>
-                    <span> <button class="tablinks" onclick="openCity(event, 'Tokyo')"><i class="material-icons">history</i></button></span>
-                    <div id="Tokyo" class="tabcontent">
-                        <h3>Tokyo</h3>
-                        <p>Tokyo is the capital of Japan.</p>
-                      </div>
+                            href="{{ route('logout') }}">Logout</a> </span><br>
+                    <span><button class="btn btn-primary" id="report-answer"><i
+                                class="material-icons">history</i></button></span>
+                    <span>
+                        <div id='form'>Hey</div>
+                    </span>
                 </div>
             </div>
             <div class="col-md-5 border-right">
@@ -69,6 +70,12 @@
         btnCompanies.onclick = function() {
             window.alert("Successfully send to admins✅");
         }
+        
+        $('#form').hide();
+        $("#report-answer").click(function() {
+            $('#form').toggle();
+        });
+
     </script>
 </body>
 

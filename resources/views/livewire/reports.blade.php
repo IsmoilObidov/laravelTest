@@ -1,6 +1,6 @@
 <section class="content">
 
-        
+
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header">
@@ -34,12 +34,35 @@
                                 <th scope="row">{{ $report->name_user }}</th>
                                 <th scope="row">{{ $report->report_to_admin }}</th>
                                 <th scope="row">
-                                    <button type="button" onclick="fnc({{$i}})" id="reply{{$i}}" class="btn btn-info btn-lg">Double click to reply</button>
+                                    <button type="button" onclick="fnc({{ $i }})"
+                                        id="reply{{ $i }}" class="btn btn-info btn-lg">Double click to
+                                        reply</button>
 
-                                        <form name="input" id='form{{$i}}' style="display: none;" wire:submit.prevent='sendReportAnswer'>
-                                            <input type="text" name="report_answer" placeholder="Reply to {{$report->name_user}}..."/>
-                                            <button type="submit" class="btn btn-info btn-lg">Send</button>
-                                        </form>
+                                    <form name="input" id='form{{ $i }}' style="display: none;"
+                                        wire:submit.prevent='sendReportAnswer'>
+                                        <select name="name_user" wire:model.defer='name_user'>
+                                            <option></option>
+                                            <option value="{{ $report->name_user }}">{{ $report->name_user }}</option>
+                                        </select>
+                                        @error('name_user')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}</div>
+                                        @enderror
+                                        <input type="text" name="answer" wire:model.defer='answer'
+                                            placeholder="Reply to {{ $report->name_user }}..." />
+                                        @error('answer')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}</div>
+                                        @enderror
+                                        
+                                        <input type="number" name='message_id' wire:model='message_id' value='{{ $report->id }}'/>
+                                        @error('message_id')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}</div>
+                                        @enderror
+
+                                        <button type="submit" id="send_report" class="btn btn-info btn-lg">Send</button>
+                                    </form>
                                 </th>
 
 
