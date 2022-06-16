@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3846e718a62955729539015443a20e96",
+    "content-hash": "19c03ed52497da07a915fa64e372cffe",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1111,20 +1111,20 @@
         },
         {
             "name": "laravel/cashier",
-            "version": "v13.8.6",
+            "version": "v13.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-stripe.git",
-                "reference": "2147b8eb1249e94b36b95ad4ffff35b37eebe320"
+                "reference": "7a762f51c1d417125cc349aadd7f70e1a345f8d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/2147b8eb1249e94b36b95ad4ffff35b37eebe320",
-                "reference": "2147b8eb1249e94b36b95ad4ffff35b37eebe320",
+                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/7a762f51c1d417125cc349aadd7f70e1a345f8d8",
+                "reference": "7a762f51c1d417125cc349aadd7f70e1a345f8d8",
                 "shasum": ""
             },
             "require": {
-                "dompdf/dompdf": "^0.8.6|^1.0.1",
+                "dompdf/dompdf": "^1.2.1",
                 "ext-json": "*",
                 "illuminate/console": "^8.37|^9.0",
                 "illuminate/contracts": "^8.37|^9.0",
@@ -1138,7 +1138,7 @@
                 "moneyphp/money": "^3.2|^4.0",
                 "nesbot/carbon": "^2.0",
                 "php": "^7.3|^8.0",
-                "stripe/stripe-php": "^7.39",
+                "stripe/stripe-php": "^7.39|^8.0",
                 "symfony/http-kernel": "^5.0|^6.0",
                 "symfony/polyfill-intl-icu": "^1.22.1"
             },
@@ -1175,6 +1175,10 @@
                 {
                     "name": "Taylor Otwell",
                     "email": "taylor@laravel.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "email": "dries@laravel.com"
                 }
             ],
             "description": "Laravel Cashier provides an expressive, fluent interface to Stripe's subscription billing services.",
@@ -1187,7 +1191,7 @@
                 "issues": "https://github.com/laravel/cashier/issues",
                 "source": "https://github.com/laravel/cashier"
             },
-            "time": "2022-04-12T15:25:19+00:00"
+            "time": "2022-05-17T15:38:08+00:00"
         },
         {
             "name": "laravel/framework",

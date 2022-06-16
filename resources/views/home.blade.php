@@ -42,6 +42,17 @@
                 <div class="p-3 py-5">
                     @livewire('home-livewire')
 
+                    @if (session()->get('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -70,12 +81,11 @@
         btnCompanies.onclick = function() {
             window.alert("Successfully send to admins✅");
         }
-        
+
         $('#form').hide();
         $("#report-answer").click(function() {
             $('#form').toggle();
         });
-
     </script>
 </body>
 

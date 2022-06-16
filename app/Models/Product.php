@@ -37,4 +37,9 @@ class Product extends Model
         $this->belongsToMany('App\Models\Product', 'id', 'name', 'quantity', 'discount', 'price', 'barcode', 'article','photo','description' );
 
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

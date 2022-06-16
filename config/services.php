@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'stripe' => [
+        'model'  => App\Models\User::class,
+        'key' => env('pk_test_51KqC8eCFqPz698tdHw4AMWeNUwVPhxLFaWnprr72FzUR2J9Mfx6cAotQoSCvGCIB7vfn8TXhwb7jjq5jUBnFYPh600PWijDwwG'),
+        'secret' => env('sk_test_51KqC8eCFqPz698tdsv0ErmAlsyjRxL2ejOhuhBQ2VEKZ3OH2ROUcSioh0UsXfuzGtDc8KPRx9WVXGgp8ckvpnq0b00HXakqeLq'),
+    ],
+
 ];
