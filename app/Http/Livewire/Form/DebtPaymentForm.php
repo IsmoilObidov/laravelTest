@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Form;
 use Livewire\Component;
 use App\Models\ClientsModel;
 use App\Models\Debt_payment;
-use App\Models\Sale;
 
 class DebtPaymentForm extends Component
 {
@@ -13,12 +12,13 @@ class DebtPaymentForm extends Component
     public $address;
     public $phoneNumber;
     public $client_sale;
+    public $debt_payment;
 
     protected $listeners = ['setForm', 'fresh' => '$refresh'];
 
     public function __construct()
     {
-        $this->debt_payment = Debt_payment::first()->get_client->get_sale;   
+        $this->debt_payment = Debt_payment::first()->get_client->get_sale ?? [];   
     }
 
     public function render()

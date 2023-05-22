@@ -11,13 +11,14 @@
                         <select list="brow" name="departament_oper_id" wire:model="departament_oper_id">
                             <option></option>
                             <datalist id="brow">
-                            @foreach ($departament_operation as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }} - {{ $item->get_departament() }}</option>
-                            @endforeach
+                                @foreach ($departament_operation as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }} -
+                                        {{ $item->get_departament() }}</option>
+                                @endforeach
                             </datalist>
                         </select>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">   
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         <input type="number" name="summa" wire:model="summa" class="form-control"
                             placeholder="Enter sum">
                     </div>
@@ -91,13 +92,17 @@
                         <tbody>
 
                             <th scope="row">{{ $item->id }}</th>
-                            <th scope="row">{{ $item->departament_operation_name->get_departament() }}</th>
-                            <th scope="row">{{ $item->departament_operation_name->{'name'} }}</th>
+                            <th scope="row">
+                                @isset($item->departament_operation_name)
+                                    {{ $item->departament_operation_name->get_departament() }}
+                                @endisset
+                            </th>
+                            <th scope="row">{{ $item->departament_operation_name->{'name'} ?? '' }}</th>
                             <th scope="row">${{ $item->summa }}</th>
                             <th scope="row">
 
-                                <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect" data-toggle="modal"
-                                    data-target="#myModal{{ $i }}">Description</button>
+                                <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect"
+                                    data-toggle="modal" data-target="#myModal{{ $i }}">Description</button>
 
                                 <div class="modal fade" id="myModal{{ $i }}" role="dialog">
                                     <div class="modal-dialog">
@@ -120,7 +125,7 @@
 
                         </tbody>
                         @php
-                            $i+=1;
+                            $i += 1;
                         @endphp
                     @endforeach
                 </table>

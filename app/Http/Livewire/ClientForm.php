@@ -18,7 +18,7 @@ class ClientForm extends Component
 
     public function __construct()
     {
-        $this->client_sale = ClientsModel::first()->get_sale;   
+        $this->client_sale = ClientsModel::first()->get_sale ?? [];   
     }
 
     public function createClient()

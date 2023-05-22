@@ -19,7 +19,7 @@ class ClientsSeeder extends Seeder
         for ($i=0; $i < 3; $i++) {
             DB::table('summa_departament')->insert([
                 'departament_oper_id' => '22',
-                'summa' => Integer::random(10),
+                'summa' => 1000,
                 // 'phoneNumber' =>Str::random(10) ,
             ]);
         }
